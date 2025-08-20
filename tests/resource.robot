@@ -12,8 +12,8 @@ ${Shop_page_load}        css:.nav-link
 
 *** Keywords ***
 open the browser with the Mortgage payment url 
-    Create Webdriver     Chrome 
-    Go To       https://rahulshettyacademy.com/loginpagePractise/
+    Open Browser        https://rahulshettyacademy.com/loginpagePractise/    chrome    
+    Maximize Browser Window
 
 Close Browser session 
     Close Browser
