@@ -20,6 +20,9 @@ Resource        resource.robot
     Select the card and add to cart    Nokia Edge
     wait for the end
 
+03. Select the form and navigate to child Window
+    Fill the login details and select the admin user     ${valid_username}      ${valid_password} 
+
 
 *** Keywords ***
 Fill the login form
@@ -65,3 +68,18 @@ Select the card and add to cart
    END  
    Click Button    xpath://app-card[${index}]//div[1]//div[2]//button[1]
    Sleep    3s
+
+Fill the login details and select the admin user
+    [Arguments]    ${username}    ${password}
+    Input Text        id:username    ${username}  
+    Input Password    id:password     ${password}   
+    Click Element    css:input[value='user'] 
+    Wait Until Element Is Visible    css:.modal-body 
+    Click Button    id:okayBtn
+    Click Button    id:okayBtn
+    Click Button    id:okayBtn
+    Wait Until Element Is Not Visible    css:.modal-body 
+    #Select From List By Label    css:select.form-control    Teacher. 
+    #Select From List By Value    css:select.form-control    teach
+    #above 2 ways are also correct.
+    Select From List By Label    xpath://select[@class='form-control']    Teacher
